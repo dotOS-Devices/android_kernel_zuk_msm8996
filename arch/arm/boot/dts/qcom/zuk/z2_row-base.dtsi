@@ -230,7 +230,7 @@
 };
 
 &pmi8994_charger {
-	qcom,fastchg-current-ma = <2400>;
+	qcom,fastchg-current-ma = <2600>;
 };
 
 &pmi8994_haptics {
