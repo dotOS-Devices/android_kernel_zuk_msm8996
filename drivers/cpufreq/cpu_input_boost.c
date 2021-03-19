@@ -58,13 +58,13 @@ static struct boost_drv *boost_drv_g __read_mostly;
 static u32 get_boost_freq(struct boost_drv *b, u32 cpu, u32 state)
 {
 	if (state & INPUT_BOOST) {
-		if (cpumask_test_cpu(cpu, cpu_lp_mask))
+		if (cpumask_test_cpu(cpu, cpu_cpu_mask))
 			return input_boost_freq_lp;
 
 		return input_boost_freq_hp;
 	}
 
-	if (cpumask_test_cpu(cpu, cpu_lp_mask))
+	if (cpumask_test_cpu(cpu, cpu_cpu_mask))
 		return general_boost_freq_lp;
 
 	return general_boost_freq_hp;
@@ -72,7 +72,7 @@ static u32 get_boost_freq(struct boost_drv *b, u32 cpu, u32 state)
 
 static u32 get_min_freq(struct boost_drv *b, u32 cpu)
 {
-	if (cpumask_test_cpu(cpu, cpu_lp_mask))
+	if (cpumask_test_cpu(cpu, cpu_cpu_mask))
 		return input_boost_return_freq_lp;
 
 	return input_boost_return_freq_hp;
